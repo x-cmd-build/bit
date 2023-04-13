@@ -18,6 +18,10 @@ jobs:
       git_email: tzw@x-cmd.com
       repo_name: bit
     steps:
+        - name: set
+        run: |
+          set +o errexit
+          set +o pipefail
         - name: main
           uses: x-cmd/action@main
           with:
