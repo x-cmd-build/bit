@@ -12,27 +12,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      github_token: ${{ secrets.MINIMUM_PRIVILEGE_TOKEN }}
-      ssh_key: ${{ secrets.REPO_SSH_KEY }}
+      # github_token: ${{ secrets.MINIMUM_PRIVILEGE_TOKEN }}
+      # ssh_key: ${{ secrets.REPO_SSH_KEY }}
       git_user: tzw-my
       git_email: tzw@x-cmd.com
       repo_name: bit
+    # steps:
+    #   - uses: actions/checkout@v2
+    #   - name: main
+    #     run: |
+    #       set +o errexit
+    #       set +o pipefail
+    #       eval "$(curl https://get.x-cmd.com)"
+    #       x gh token $github_token
+    #       git clone git@github.com:x-cmd-pkg/yanfa.git
+    #       [ -f ./yanfa/.x-cmd/index ] || ls
+    #       . ./yanfa/.x-cmd/index || true
     steps:
-      - uses: actions/checkout@v2
       - name: main
-        run: |
-          set +o errexit
-          set +o pipefail
-          eval "$(curl https://get.x-cmd.com)"
-          x gh toekn ${github_token}
-          x gh repo ls 
-
-      # steps:
-      #   - name: main
-      #     uses: x-cmd/action@main
-      #     with:
-      #       code: |
-          #     x gh token $github_token
-          #     git clone git@github.com:x-cmd-pkg/yanfa.git
-          #     [ -f ./yanfa/.x-cmd/index ] || ls
-          #     . ./yanfa/.x-cmd/index || true
+        uses: x-cmd/action@main
+        with:
+          code: |
+            x --help
+      # x gh token $github_token
+      # git clone git@github.com:x-cmd-pkg/yanfa.git
+      # [ -f ./yanfa/.x-cmd/index ] || ls
+      # . ./yanfa/.x-cmd/index || true
