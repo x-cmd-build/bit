@@ -1,0 +1,1 @@
+bit static binary
