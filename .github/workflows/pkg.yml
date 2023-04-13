@@ -17,22 +17,20 @@ jobs:
       git_user: tzw-my
       git_email: tzw@x-cmd.com
       repo_name: bit
+    # steps:
+    #     - name: main
+    #       uses: x-cmd/action@main
+    #       with:
+    #         code: |
+    #           x --help
     steps:
-        - name: set
+      - uses: actions/checkout@v2
+      - name: main
         run: |
           set +o errexit
           set +o pipefail
-        - name: main
-          uses: x-cmd/action@main
-          with:
-            code: |
-              x --help
-    # steps:
-    #   - uses: actions/checkout@v2
-    #   - name: main
-    #     run: |
-    #       eval "$(curl https://get.x-cmd.com)"
-    #       x --help
+          eval "$(curl https://get.x-cmd.com)"
+          x --help
 
       # steps:
       #   - name: main
